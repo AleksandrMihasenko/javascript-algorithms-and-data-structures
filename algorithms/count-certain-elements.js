@@ -22,6 +22,7 @@ function binarySearchElement(arr, elem) {
   return -1;
 }
 
+// O(log k n)
 function countCertainElements(arr, elem) {
   const posElem = binarySearchElement(arr, elem);
 
