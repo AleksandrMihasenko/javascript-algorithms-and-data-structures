@@ -1,11 +1,13 @@
+//O(n)
 function factorial(n) {
   if (n === 0 || n === 1) {
     return 1;
   }
-  //O(n)
+
   return n * factorial(n - 1);
 }
 
+//O(n)
 function factorialWithoutRecursion(n) {
   const stack = [[n, 1]];
 
