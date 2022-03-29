@@ -3,7 +3,7 @@ function findSmallestIndex(arr) {
   let smallestElement = arr[0];
   let smallestIndex = 0;
 
-  for (let [index, value] of arr.entries()) {
+  for (const [index, value] of arr.entries()) {
     if (arr[index] < smallestElement) {
       smallestElement = value;
       smallestIndex = index;
@@ -16,11 +16,11 @@ function selectionSort(arr) {
   let array = [...arr];
   let sortedArray = [];
 
-  arr.forEach(() => {
+  for (const _ of arr) {
     let smallestIndex = findSmallestIndex(array);
 
     sortedArray.push(array.splice(smallestIndex, 1)[0]);
-  })
+  }
 
   return sortedArray;
 }
