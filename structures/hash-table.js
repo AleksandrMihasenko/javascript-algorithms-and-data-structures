@@ -1,36 +1,71 @@
+import { LinkedList } from './linked-list/LinkedList.js';
+
 //hash-table, dictionary, map
-//variant 1
-class HashTable {
-  store = new Array(10);
+class HashTableTwo {
+  constructor(hashTableSize = 25) {
+    this.buckets = Array(hashTableSize).fill(null).map(() => new LinkedList());
+    this.keys = {};
+  }
 
   hash(key) {
-    let sum = 0;
+    const hash = Array.from(key).reduce((hashAccumulator, keySymbol) => (hashAccumulator + keySymbol.charCodeAt(0)), 0);
 
-    for (let i = 0; i < key.length; i++) {
-      sum += key.charCodeAt(i);
+    return hash % this.buckets.length;
+  }
+
+  set(key, value) {
+    const keyHash = this.hash(key);
+    this.keys[key] = keyHash;
+    const bucketLinkedList = this.buckets[keyHash];
+    const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
+
+    if (!node) {
+      bucketLinkedList.append({ key, value });
+    } else {
+      node.value.value = value;
     }
-    return sum;
+
+    return null;
   }
 
-  //O(1)
-  add(key, value) {
-    this.store[this.hash(key)] = this.store[this.hash(key)] || [];
-    this.store[this.hash(key)].push({ key, value });
+  delete(key) {
+    const keyHash = this.hash(key);
+    delete this.keys[key];
+    const bucketLinkedList = this.buckets[keyHash];
+    const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
+
+    if (node) {
+      return bucketLinkedList.delete(node.value);
+    }
+
+    return null;
   }
 
-  //O(m * 1)
   get(key) {
-    return this.store[this.hash(key)].find((item) => item.key === key).value;
+    const bucketLinkedList = this.buckets[this.hash(key)];
+    const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
+
+    return node ? node.value.value : undefined;
+  }
+
+  has(key) {
+    return Object.hasOwnProperty.call(this.keys, key);
+  }
+
+  getKeys() {
+    return Object.keys(this.keys);
+  }
+
+  getValues() {
+    return this.buckets.reduce((values, bucket) => {
+      const bucketValues = bucket.toArray().map((linkedListNode) => linkedListNode.value.value);
+
+      return values.concat(bucketValues)
+    }, []);
   }
 }
 
-const dict = new HashTable();
-dict.add('ab', '1');
-dict.add('ba', '2');
-console.log(dict.get('ab'), '--', dict.get('ba'));
-
-//variant 2 in javascript
-const dict2 = new Map();
-dict2.set('ab', '1');
-dict2.set('ba', '2');
-console.log(dict.get('ab'), '--', dict.get('ba'));
+const hashTable = new HashTableTwo();
+console.log(hashTable);
+hashTable.set('let', 'one')
+console.log(hashTable.get('one'));
