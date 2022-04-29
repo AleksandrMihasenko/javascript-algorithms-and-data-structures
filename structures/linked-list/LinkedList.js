@@ -161,7 +161,7 @@ export class LinkedList {
   }
 
   // reverse linked list
-  reversr() {
+  reverse() {
     let currentNode = this.head;
     let prevNode = null;
     let nextNode = null;
