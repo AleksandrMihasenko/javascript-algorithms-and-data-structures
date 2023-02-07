@@ -20,7 +20,7 @@ function containsDuplicateVersionTwo(nums) {
   for (const [_, value] of nums.entries()) {
     if (hashMap[value]) return true;
 
-    hashMap[value] = hashMap[value] + 1 || 1;
+    hashMap[value] = value;
   }
 
   return result;
