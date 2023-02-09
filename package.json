@@ -10,11 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/AleksandrMihasenko/javascript-algorithms-and-data-structures.git"
   },
-  "type": "module",
   "author": "Mihasenko A.",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AleksandrMihasenko/javascript-algorithms-and-data-structures/issues"
   },
-  "homepage": "https://github.com/AleksandrMihasenko/javascript-algorithms-and-data-structures#readme"
+  "homepage": "https://github.com/AleksandrMihasenko/javascript-algorithms-and-data-structures#readme",
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
 }
