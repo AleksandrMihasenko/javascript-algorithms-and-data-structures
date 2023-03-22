@@ -24,7 +24,7 @@ Output: [[""]]
 ```
 ---
 
-### Example 2:
+### Example 3:
 
 ```
 Input: strs = ["a"]
