@@ -3,7 +3,7 @@
 // Time complexity: O(n)
 // Space complexity: O(n)
 
-function containsDuplicateVersionOne(nums) {
+function containsDuplicateVersionOne(nums: number[]): boolean {
   const setNums = new Set(nums);
 
   return setNums.size !== nums.length;
@@ -13,9 +13,13 @@ function containsDuplicateVersionOne(nums) {
 // Time complexity: O(n)
 // Space complexity: O(n)
 
-function containsDuplicateVersionTwo(nums) {
-  const hashMap = {};
-  let result = false
+type DuplicatesHashMap = {
+  [key: string]: number
+};
+
+function containsDuplicateVersionTwo(nums: number[]): boolean {
+  const hashMap: DuplicatesHashMap = {};
+  let result = false;
 
   for (const [_, value] of nums.entries()) {
     if (hashMap[value]) return true;

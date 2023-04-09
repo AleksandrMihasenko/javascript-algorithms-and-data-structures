@@ -3,11 +3,14 @@
 // Time complexity: O(s + t)
 // Space complexity: O(s + t)
 
-function validAnagramVersionOne(s, t) {
+type AnagramHashMap = {
+  [key: string]: number
+}
+function validAnagramVersionOne(s: string, t: string) {
   if (s.length !== t.length) return false;
 
-  const hashMapOne = {};
-  const hashMapTwo = {};
+  const hashMapOne: AnagramHashMap = {};
+  const hashMapTwo: AnagramHashMap = {};
 
   for (const [key, _] of s.split('').entries()) {
     hashMapOne[s[key]] = hashMapOne[s[key]] ? hashMapOne[s[key]] + 1 : 1;
@@ -23,7 +26,7 @@ function validAnagramVersionOne(s, t) {
 // Time complexity: O(n * logn)
 // Space complexity: O(1)
 
-function validAnagramVersionTwo(s, t) {
+function validAnagramVersionTwo(s: string, t: string) {
   return s.split('').sort().join('') === t.split('').sort().join('');
 }
 
