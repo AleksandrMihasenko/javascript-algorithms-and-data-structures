@@ -6,6 +6,7 @@ Each row must contain the digits ```1-9``` without repetition.
 Each column must contain the digits ```1-9``` without repetition.
 Each of the nine ```3 x 3``` sub-boxes of the grid must contain the digits ```1-9``` without repetition.
 
+
 **Note:**
 
 A Sudoku board (partially filled) could be valid but is not necessarily solvable.
@@ -51,6 +52,7 @@ the top left corner being modified to 8. Since there
 are two 8's in the top left 3x3 sub-box, it is invalid.
 ```
 ---
+
 
 ### Constraints:
 
